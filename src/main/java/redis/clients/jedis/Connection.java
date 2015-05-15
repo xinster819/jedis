@@ -137,7 +137,7 @@ public class Connection implements Closeable {
          *  2. keepAlive大概意思就是说，clinet-server会互相不停发ping-pong命令，保证双方始终保证联系。
          *     详细解释可以参照stackoverflow： http://stackoverflow.com/questions/1480236/does-a-tcp-socket-connection-have-a-keep-alive
          *  3. tcpNoDelay: 保证发送数据不会延时
-         *  4. soLinger: 没研究太懂，大概就是方式tcp-CLOSE的4次握手，花费太长时间，导致请求没法快速复用这个链接。
+         *  4. soLinger: 每次client断开链接直接发rst，省了4次握手的时间浪费
          *     可以参见一下这个： http://www.tcpipguide.com/free/t_TCPConnectionTermination-2.htm
          */
         socket.setReuseAddress(true);
